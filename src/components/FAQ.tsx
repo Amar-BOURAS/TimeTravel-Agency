@@ -71,15 +71,15 @@ export default function FAQ() {
                 key={i}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: i * 0.05 }}
-                  className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
-                    isOpen
-                      ? 'border-gold-500/30 glass-card'
-                      : 'border-midnight-600 bg-midnight-800/30 hover:border-midnight-500'
-                  }`}
-                >
-                  <h3>
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: i * 0.05 }}
+                className={`overflow-hidden rounded-2xl border transition-all duration-300 ${
+                  isOpen
+                    ? 'border-gold-500/30 glass-card'
+                    : 'border-midnight-600 bg-midnight-800/30 hover:border-midnight-500'
+                }`}
+              >
+                <h3>
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : i)}
                     aria-expanded={isOpen}
@@ -100,23 +100,23 @@ export default function FAQ() {
                       <Plus className="h-4 w-4" strokeWidth={2.5} />
                     </motion.div>
                   </button>
-                  </h3>
-                  <AnimatePresence initial={false}>
-                    {isOpen && (
-                      <motion.div
-                        id={`faq-panel-${i}`}
-                        role="region"
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: 'auto', opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                        className="overflow-hidden"
-                      >
-                        <p className="px-7 pb-6 text-sm leading-relaxed text-gray-400">{item.answer}</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </motion.div>
+                </h3>
+                <AnimatePresence initial={false}>
+                  {isOpen && (
+                    <motion.div
+                      id={`faq-panel-${i}`}
+                      role="region"
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="px-7 pb-6 text-sm leading-relaxed text-gray-400">{item.answer}</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
             );
           })}
         </div>

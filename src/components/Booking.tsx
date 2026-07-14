@@ -75,7 +75,6 @@ export default function Booking() {
     <section id="reservation" className="relative py-28 sm:py-36">
       <div className="mx-auto max-w-7xl px-5 sm:px-8">
         <div className="grid gap-16 lg:grid-cols-2 lg:gap-20">
-          {/* Left — info */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -99,7 +98,7 @@ export default function Booking() {
             <div className="mt-12 space-y-5">
               {[
                 { label: 'Réponse sous 48h', value: 'Garanti' },
-                { label: 'Annulation', value: 'Jusqu’à 30 jours avant' },
+                { label: 'Annulation', value: "Jusqu'à 30 jours avant" },
                 { label: 'Paiement', value: 'En 3 fois sans frais' },
               ].map((item) => (
                 <div
@@ -113,7 +112,6 @@ export default function Booking() {
             </div>
           </motion.div>
 
-          {/* Right — form */}
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -128,7 +126,6 @@ export default function Booking() {
               className="rounded-[2rem] border border-midnight-600 glass-card p-6 sm:p-8 md:p-10"
             >
               <div className="space-y-6">
-                {/* Simple fields: nom, email, voyageurs */}
                 {fieldConfig.map(({ field, label, type, icon: Icon, placeholder }) => (
                   <div key={field}>
                     <label htmlFor={`field-${field}`} className="sr-only">
@@ -156,7 +153,6 @@ export default function Booking() {
                   </div>
                 ))}
 
-                {/* Destination + Date */}
                 <div className="grid gap-6 sm:grid-cols-2">
                   <div>
                     <label htmlFor="field-destination" className="sr-only">
@@ -211,7 +207,6 @@ export default function Booking() {
                   </div>
                 </div>
 
-                {/* Message */}
                 <div>
                   <label htmlFor="field-message" className="sr-only">
                     Message
@@ -236,7 +231,6 @@ export default function Booking() {
                   )}
                 </div>
 
-                {/* Submit */}
                 <button
                   type="submit"
                   className="btn-gold group flex w-full items-center justify-center gap-2.5 rounded-xl px-6 py-4 text-sm font-semibold shadow-lg shadow-gold-500/20"
@@ -247,7 +241,6 @@ export default function Booking() {
               </div>
             </form>
 
-            {/* Success message */}
             <AnimatePresence>
               {submitted && (
                 <motion.div

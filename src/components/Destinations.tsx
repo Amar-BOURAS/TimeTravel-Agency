@@ -37,7 +37,6 @@ const destinations = [
 export default function Destinations() {
   return (
     <section id="destinations" className="relative py-28 sm:py-36">
-      {/* Section header */}
       <div className="mx-auto mb-20 max-w-3xl px-5 text-center sm:px-8">
         <motion.span
           initial={{ opacity: 0 }}
@@ -69,7 +68,6 @@ export default function Destinations() {
         </motion.p>
       </div>
 
-      {/* Cards */}
       <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-8 lg:grid-cols-3">
         {destinations.map((dest, i) => (
           <motion.article
@@ -80,7 +78,6 @@ export default function Destinations() {
             transition={{ duration: 0.6, delay: i * 0.15 }}
             className="group relative overflow-hidden rounded-3xl border border-midnight-600 glass-card transition-all duration-500 hover:border-gold-500/40 hover:shadow-2xl hover:shadow-gold-500/10"
           >
-            {/* Image with zoom on hover */}
             <div className="relative h-72 overflow-hidden">
               <img
                 src={dest.image}
@@ -89,13 +86,11 @@ export default function Destinations() {
                 className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-midnight-950 via-midnight-950/40 to-transparent" />
-              {/* Price badge */}
               <div className="absolute right-4 top-4 rounded-full glass border border-gold-500/30 px-4 py-1.5">
                 <span className="text-xs font-semibold text-gold-200">
                   À partir de {dest.price} €
                 </span>
               </div>
-              {/* Title overlay */}
               <div className="absolute bottom-5 left-5 right-5">
                 <span className="text-xs uppercase tracking-[0.2em] text-gold-300">
                   {dest.subtitle}
@@ -106,11 +101,9 @@ export default function Destinations() {
               </div>
             </div>
 
-            {/* Body */}
             <div className="p-8">
               <p className="mb-6 text-sm leading-relaxed text-gray-300">{dest.description}</p>
 
-              {/* Highlights */}
               <div className="mb-6 flex flex-wrap gap-2">
                 {dest.highlights.map((h) => (
                   <span
@@ -123,7 +116,6 @@ export default function Destinations() {
                 ))}
               </div>
 
-              {/* Duration + CTA */}
               <div className="flex items-center justify-between border-t border-midnight-600 pt-6">
                 <span className="inline-flex items-center gap-2 text-sm text-gray-300">
                   <Clock className="h-4 w-4 text-gold-400" aria-hidden="true" />

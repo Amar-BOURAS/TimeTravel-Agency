@@ -171,7 +171,7 @@ const quickReplies = [
 ];
 
 /* ------------------------------------------------------------------ */
-/*  Initial message                                                   */
+/*  Initial message + history persistence                             */
 /* ------------------------------------------------------------------ */
 
 const initialMessage: ChatMessage = {
@@ -217,6 +217,7 @@ export default function Chatbot() {
     }
   }, [messages]);
 
+  // Auto-scroll to bottom
   useEffect(() => {
     if (scrollRef.current) {
       scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
@@ -275,7 +276,7 @@ export default function Chatbot() {
     if (typingTimerRef.current) clearTimeout(typingTimerRef.current);
   };
 
-  // Render bot text with simple **bold** parsing
+  // Render bot text with simple **bold** parsing and line breaks
   const renderText = (text: string) => {
     const parts = text.split(/(\*\*[^*]+\*\*)/g);
     return parts.map((part, i) => {
@@ -286,7 +287,6 @@ export default function Chatbot() {
           </strong>
         );
       }
-      // Preserve newlines and bullets
       return (
         <span key={i}>
           {part.split('\n').map((line, j, arr) => (
@@ -454,11 +454,23 @@ export default function Chatbot() {
         )}
         <AnimatePresence mode="wait">
           {open ? (
-            <motion.div key="close" initial={{ rotate: -90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: 90, opacity: 0 }} transition={{ duration: 0.2 }}>
+            <motion.div
+              key="close"
+              initial={{ rotate: -90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: 90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               <X className="h-6 w-6 text-midnight-950" strokeWidth={2.5} aria-hidden="true" />
             </motion.div>
           ) : (
-            <motion.div key="open" initial={{ rotate: 90, opacity: 0 }} animate={{ rotate: 0, opacity: 1 }} exit={{ rotate: -90, opacity: 0 }} transition={{ duration: 0.2 }}>
+            <motion.div
+              key="open"
+              initial={{ rotate: 90, opacity: 0 }}
+              animate={{ rotate: 0, opacity: 1 }}
+              exit={{ rotate: -90, opacity: 0 }}
+              transition={{ duration: 0.2 }}
+            >
               <MessageCircle className="h-6 w-6 text-midnight-950" strokeWidth={2.5} aria-hidden="true" />
             </motion.div>
           )}
